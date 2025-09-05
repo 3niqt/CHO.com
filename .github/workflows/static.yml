@@ -1,43 +1,126 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>City Health Office</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
 
-on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
+    /* Header */
+    .header {
+      background-color: #ffd700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 30px;
+    }
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    .header img {
+      height: 70px;
+    }
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+    .header h1 {
+      color: #0046ad;
+      margin: 0;
+      font-size: 28px;
+      font-weight: bold;
+    }
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+    .nav {
+      display: flex;
+      gap: 20px;
+    }
 
-jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          path: '.'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+    .nav a {
+      text-decoration: none;
+      font-weight: bold;
+      color: black;
+    }
+
+    /* Main layout */
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .left img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 10px;
+    }
+
+    .right {
+      text-align: center;
+      flex: 1;
+      margin-left: 50px;
+    }
+
+    .right h2 {
+      color: gray;
+      margin-bottom: 30px;
+    }
+
+    .role-btn {
+      display: block;
+      width: 200px;
+      margin: 15px auto;
+      padding: 12px;
+      border: 2px solid #0073e6;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #0046ad;
+      background-color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .role-btn:hover {
+      background-color: #0073e6;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div style="display:flex;align-items:center;gap:15px;">
+      <img src="logo.png" alt="Logo">
+      <h1>CITY HEALTH OFFICE</h1>
+    </div>
+    <div class="nav">
+      <a href="#">HOME</a>
+      <a href="#">ABOUT</a>
+      <a href="#">SERVICES</a>
+      <a href="#">CONTACT</a>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="container">
+    <div class="left">
+      <img src="map.png" alt="Map">
+    </div>
+    <div class="right">
+      <h2>Select Your Role</h2>
+      <button class="role-btn" onclick="navigate('client.html')">CLIENT</button>
+      <button class="role-btn" onclick="navigate('admin.html')">ADMIN</button>
+    </div>
+  </div>
+
+  <script>
+    function navigate(page) {
+      window.location.href = page;
+    }
+  </script>
+
+</body>
+</html>
